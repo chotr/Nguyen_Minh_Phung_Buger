@@ -3,7 +3,8 @@
 // import Content from "./components/Content";
 // import Sidebar from "./components/Sidebar";
 
-import BaiTapReactJS from "./BaiTapReactJS";
+// import BaiTapReactJS from "./BaiTapReactJS";
+// import State from "./Hook/State";
 
 // import BaiTap1 from './BaiTap1'
 // import ConditionClass from "./Condition";
@@ -16,53 +17,59 @@ import BaiTapReactJS from "./BaiTapReactJS";
 // import StateClass from "./State/Index";
 // import BaiTap3 from "./BaiTap3";
 // import LifeCycle from "./LifeCycle";
-import UserManagement from "./UserManagement";
+// import UserManagement from "./UserManagement";
+// import LifeCycle from "./Hook/LifeCycle";
+// import DemoHook from "./Hook/DemoHook";
+// import BauCua from "./BauCua";
+// import DemoRedux from "./DemoRedux";
+import TodoList from "./TodoListRedux";
+import QuanLyKhoaHoc from "./QuanLyKhoaHoc";
 
-
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import DemoRouter from "./DemoRouter";
+import NestedRouter from "./DemoRouter/NestedRouter";
+import Burger from "./Burger";
 
 // JSX - javascript XML - kết hợp js vs html lại với nhau
 function App() {
   return (
-    // <div className="App">
-    //   <Header />
-    //   <div className="d-flex">
-    //     <div className="w-25">
-    //       <Sidebar />
-    //     </div>
-    //     <div className="w-75">
-    //       <Content />
-    //     </div>
-    //   </div>
-    //   <Footer />
-    // </div>
+    <BrowserRouter>
+      {/* switch: nếu co nhiều path khớp url nó sẽ render ra tất cả componet, nếu chỉ render 1 cpn ta bọc các route vs switch */}
+      <Switch>
+        {/* path: ss path vs url để quyết định componet có đc hiển thị ra hay không
+        exact: thông thường path="/" sẽ khớp vs tất cả url, để khắc phục ta thêm exact */}
 
-    // <BaiTap1 />
+        <Route path="/" exact component={DemoRouter} />
+        {/* <Route path="/:movieID" exact component={DemoRouter} /> */}
 
-    <>
-      {/* <DataBindingClass />
+        {/* cách 1 : dùng props component */}
+        <Route path="/courses" component={QuanLyKhoaHoc} />
+        {/* cách 2: dùng children */}
+        {/* <Route path="/baucua">
+          <BauCua />
+        </Route> */}
+        {/* cách 3: dùng props render */}
+        <Route
+          path="/todolist"
+          render={(routerProps) => {
+            return <TodoList {...routerProps} />;
+          }}
+        />
 
-      <DataBindingFunction />
+        <Route path="/burger">
+          <Burger />
+        </Route>
 
-      <EventClass />
+        <Route path="/topic">
+          <NestedRouter />
+        </Route>
 
-      <ConditionClass />
-
-      <ListsClass /> */}
-
-      {/* <StateClass /> */}
-
-      {/* <BaiTap2 /> */}
-
-      {/* <Parent /> */}
-      
-      {/* <BaiTap3 /> */}
-
-      {/* <BaiTapReactJS /> */}
-
-      {/* <LifeCycle /> */}
-
-      <UserManagement />
-    </>
+        {/* để page not found cuối cùng */}
+        <Route>
+          <h3>Page not found</h3>
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
