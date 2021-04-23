@@ -20,7 +20,7 @@
 // import UserManagement from "./UserManagement";
 // import LifeCycle from "./Hook/LifeCycle";
 // import DemoHook from "./Hook/DemoHook";
-// import BauCua from "./BauCua";
+import BauCua from "./BauCua";
 // import DemoRedux from "./DemoRedux";
 import TodoList from "./TodoListRedux";
 import QuanLyKhoaHoc from "./QuanLyKhoaHoc";
@@ -39,30 +39,30 @@ function App() {
         {/* path: ss path vs url để quyết định componet có đc hiển thị ra hay không
         exact: thông thường path="/" sẽ khớp vs tất cả url, để khắc phục ta thêm exact */}
 
-        <Route path="/" exact component={DemoRouter} />
+        {/* <Route path="/" exact component={DemoRouter} /> */}
         {/* <Route path="/:movieID" exact component={DemoRouter} /> */}
 
         {/* cách 1 : dùng props component */}
-        <Route path="/courses" component={QuanLyKhoaHoc} />
+        {/* <Route path="/courses" component={QuanLyKhoaHoc} /> */}
         {/* cách 2: dùng children */}
         {/* <Route path="/baucua">
           <BauCua />
         </Route> */}
         {/* cách 3: dùng props render */}
-        <Route
+        {/* <Route
           path="/todolist"
           render={(routerProps) => {
             return <TodoList {...routerProps} />;
           }}
-        />
+        /> */}
 
-        <Route path="/burger">
+        <Route path="/">
           <Burger />
         </Route>
 
-        <Route path="/topic">
+        {/* <Route path="/topic">
           <NestedRouter />
-        </Route>
+        </Route> */}
 
         {/* để page not found cuối cùng */}
         <Route>
